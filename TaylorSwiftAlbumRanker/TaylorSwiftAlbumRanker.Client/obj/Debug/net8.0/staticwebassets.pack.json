@@ -1,0 +1,37 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker.Client\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker.Client\\obj\\Debug\\net8.0\\compressed\\ld2x7k4nnb.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker.Client\\wwwroot\\appsettings.Development.json",
+      "PackagePath": "staticwebassets\\appsettings.Development.json"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker.Client\\wwwroot\\appsettings.json",
+      "PackagePath": "staticwebassets\\appsettings.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TaylorSwiftAlbumRanker.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.TaylorSwiftAlbumRanker.Client.props",
+      "PackagePath": "build\\TaylorSwiftAlbumRanker.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.TaylorSwiftAlbumRanker.Client.props",
+      "PackagePath": "buildMultiTargeting\\TaylorSwiftAlbumRanker.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.TaylorSwiftAlbumRanker.Client.props",
+      "PackagePath": "buildTransitive\\TaylorSwiftAlbumRanker.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
