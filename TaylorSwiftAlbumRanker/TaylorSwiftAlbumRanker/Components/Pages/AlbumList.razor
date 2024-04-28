@@ -17,7 +17,6 @@ else if (albums.Count == 0)
 }
 else
 {
-    <ul>
         @foreach(var album in albums)
         {
             <div class="card" style="width: 18rem;">
@@ -25,10 +24,10 @@ else
                 <div class="card-body">
                     <h5 class="card-title">@album.AlbumName</h5>
                     <p class="card-text">OVERALL RANKING DISPLAYED HERE</p>
+
                 </div>
             </div>
-        }
-    </ul>        
+        }       
 }
 
 <button @onclick="AddNewAlbum" class="btn btn-primary">Add New Album</button>
@@ -38,7 +37,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {   
-        albums = await  AlbumsService.GetAlbums();
+        albums = await  AlbumsService.GetAllAlbums();
     }
 
     void AddNewAlbum()

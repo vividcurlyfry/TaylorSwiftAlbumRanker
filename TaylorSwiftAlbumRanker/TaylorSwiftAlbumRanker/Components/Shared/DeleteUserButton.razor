@@ -1,0 +1,16 @@
+﻿@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<button @onclick="DeleteUser" class="btn btn-primary">Delete User</button>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    void DeleteUser()
+    {
+        NavigationManager.NavigateTo($"/edit-user/{Id}");
+    }
+
+}

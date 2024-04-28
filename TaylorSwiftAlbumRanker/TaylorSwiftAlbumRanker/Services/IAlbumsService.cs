@@ -5,7 +5,7 @@ namespace TaylorSwiftAlbumRanker.Services
 {
     public interface IAlbumsService
     {
-        Task<List<Album>> GetAlbums(); 
+        Task<List<Album>> GetAllAlbums(); 
         Task<Album> AddAlbum(Album album);
     }
 }

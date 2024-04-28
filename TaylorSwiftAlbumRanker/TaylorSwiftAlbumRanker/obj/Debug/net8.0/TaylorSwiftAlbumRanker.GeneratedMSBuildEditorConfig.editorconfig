@@ -54,6 +54,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Shared/CreateUserButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcQ3JlYXRlVXNlckJ1dHRvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Shared/DeleteUserButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcRGVsZXRlVXNlckJ1dHRvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Shared/EditUserButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTaGFyZWRcRWRpdFVzZXJCdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

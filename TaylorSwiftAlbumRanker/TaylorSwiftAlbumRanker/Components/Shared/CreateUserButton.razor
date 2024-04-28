@@ -1,0 +1,12 @@
+﻿@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<button @onclick="CreateUser" class="btn btn-primary">Create New User</button>
+
+@code {
+    void CreateUser()
+    {
+        NavigationManager.NavigateTo("/edit-user");
+    }
+
+}

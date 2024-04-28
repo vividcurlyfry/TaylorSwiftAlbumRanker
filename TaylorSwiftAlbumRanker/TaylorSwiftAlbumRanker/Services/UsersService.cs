@@ -21,10 +21,43 @@ namespace TaylorSwiftAlbumRanker.Services
             return user;
         }
 
+        public async Task<bool> DeleteUser(int id)
+        {
+            var dbUser = await _context.Users.FindAsync(id);
+            if (dbUser != null)
+            {
+                _context.Remove(dbUser);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
         public async Task<List<User>> GetAllUsers()    
         {
             var users = await _context.Users.ToListAsync();
             return users;
+        }
+
+        public async Task<User> GetUserById(int id)
+        {
+            return await _context.Users.FindAsync(id);  
+        }
+
+        public async Task<User> UpdateUser(User user)
+        {
+            var dbUser = await _context.Users.FindAsync(user.Id);
+            if (dbUser != null)
+            {
+                dbUser.Username = dbUser.Username;
+                await _context.SaveChangesAsync();
+                return dbUser;
+            }
+            throw new Exception("User not found.");
         }
     }
 }

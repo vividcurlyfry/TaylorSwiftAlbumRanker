@@ -1,12 +1,14 @@
 ﻿@page "/edit-album"
 @page "/edit-album/{id:int}"
 @inject IAlbumsService AlbumService
+@rendermode InteractiveServer
 
 <h3>Add Album</h3>
 
 <EditForm Model="album" OnSubmit="HandleSubmit" FormName="editAlbum">
     <label>Album</label>
     <InputText @bind-Value="album.AlbumName">Submit</InputText>
+    <InputText @bind-Value="album.PictureHyperlink">Submit</InputText>
     <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
 @code {

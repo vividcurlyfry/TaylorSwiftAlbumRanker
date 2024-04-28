@@ -6,7 +6,7 @@
 
 <EditForm Model="user" OnSubmit="HandleSubmit" FormName="editUser">
     <label>Username</label>
-    <InputText @bind-Value="user.Username">Submit</InputText>
+    <InputText @bind-Value="user.Username">@user.Username</InputText>
     <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
 @code {

@@ -2,7 +2,6 @@
 @inject IUsersService UsersService
 @inject NavigationManager NavigationManager
 @attribute [StreamRendering(true)]
-@rendermode InteractiveServer
 
 <h3>UserList</h3>
 
@@ -19,12 +18,12 @@ else
     <ul>
         @foreach(var user in users)
         {
-            <li>@user.Username</li>
+            <li>@user.Username <EditUserButton Id= "user.Id"/></li>
         }
     </ul>        
 }
 
-<button @onclick="CreateUser" class="btn btn-primary">Create User</button>
+<CreateUserButton />
 
 @code {
     List<User>? users = new List<User>();
@@ -32,10 +31,5 @@ else
     protected override async Task OnInitializedAsync()
     {   
         users = await  UsersService.GetAllUsers();
-    }
-
-    void CreateUser()
-    {
-        NavigationManager.NavigateTo("/edit-user");
     }
 }

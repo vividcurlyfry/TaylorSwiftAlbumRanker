@@ -21,7 +21,7 @@ namespace TaylorSwiftAlbumRanker.Services
             return album;
         }
 
-        public async Task<List<Album>> GetAlbums()
+        public async Task<List<Album>> GetAllAlbums()
         {
             var albums = await _context.Albums.ToListAsync();
             return albums;
