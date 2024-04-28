@@ -2,7 +2,15 @@
 @page "/edit-user/{id:int}"
 @inject IUsersService UserService
 
-<h3>Add User</h3>
+@if(Id == null)
+{
+    <h3>Add User</h3>
+}
+else
+{
+    <h3>Edit @user.Username</h3>
+}
+
 
 <EditForm Model="user" OnSubmit="HandleSubmit" FormName="editUser">
     <label>Username</label>
@@ -14,6 +22,11 @@
     public int? Id { get; set; }
     [SupplyParameterFromForm]
     User user { get; set; } = new User { Username = string.Empty, RolePermission = 1 };
+
+    protected override async Task OnParametersSetAsync()
+    {
+        user = await UserService.GetUserById((int)Id);
+    }
 
     async Task HandleSubmit()
     {

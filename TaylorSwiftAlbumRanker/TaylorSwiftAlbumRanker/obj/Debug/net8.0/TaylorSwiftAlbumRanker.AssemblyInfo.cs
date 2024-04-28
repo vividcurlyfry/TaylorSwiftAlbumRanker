@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TaylorSwiftAlbumRanker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d0a64bab721b9f9dfcbe8e08f631a71310f18a82")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33f0a10fe348306aa3d47db1847a4f1d5b531b73")]
 [assembly: System.Reflection.AssemblyProductAttribute("TaylorSwiftAlbumRanker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TaylorSwiftAlbumRanker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
