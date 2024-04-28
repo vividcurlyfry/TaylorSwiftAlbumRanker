@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\debut.png",
+      "PackagePath": "staticwebassets\\images\\debut.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TaylorSwiftAlbumRanker.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

@@ -1,0 +1,22 @@
+﻿@page "/edit-album"
+@page "/edit-album/{id:int}"
+@inject IAlbumsService AlbumService
+
+<h3>Add Album</h3>
+
+<EditForm Model="album" OnSubmit="HandleSubmit" FormName="editAlbum">
+    <label>Album</label>
+    <InputText @bind-Value="album.AlbumName">Submit</InputText>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    [SupplyParameterFromForm]
+    Album album { get; set; } = new Album { AlbumName = string.Empty, PictureHyperlink = string.Empty };
+
+    async Task HandleSubmit()
+    {
+        await AlbumService.AddAlbum(album);
+    }
+}

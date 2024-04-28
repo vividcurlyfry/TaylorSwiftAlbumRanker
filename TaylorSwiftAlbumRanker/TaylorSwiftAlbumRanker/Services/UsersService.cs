@@ -13,7 +13,15 @@ namespace TaylorSwiftAlbumRanker.Services
             _context = context;
         }
 
-        public async Task<List<Users>> GetAllUsers()    
+        public async Task<User> AddUser(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+           
+            return user;
+        }
+
+        public async Task<List<User>> GetAllUsers()    
         {
             var users = await _context.Users.ToListAsync();
             return users;

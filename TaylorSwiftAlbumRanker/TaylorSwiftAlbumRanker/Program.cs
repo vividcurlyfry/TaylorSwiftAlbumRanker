@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); //register your db connection
 
 builder.Services.AddScoped<IUsersService, UsersService>(); //register user service
+builder.Services.AddScoped<IAlbumsService, AlbumsService>();
 
 var app = builder.Build();
 

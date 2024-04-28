@@ -1,9 +1,9 @@
 ﻿namespace TaylorSwiftAlbumRanker.Entities
 {
-    public class Users
+    public class User
     {
         public int Id { get; set; }
         public required string Username { get; set; }
-        public required string RolePermission { get; set; }
+        public required int RolePermission { get; set; }
     }
 }

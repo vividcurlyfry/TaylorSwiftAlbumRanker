@@ -22,12 +22,28 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/AlbumEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBbGJ1bUVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/AlbumList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBbGJ1bUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/UserEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyRWRpdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/UserList.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xVc2VyTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/TaylorSwiftAlbumRanker/Components/Pages/Weather.razor]

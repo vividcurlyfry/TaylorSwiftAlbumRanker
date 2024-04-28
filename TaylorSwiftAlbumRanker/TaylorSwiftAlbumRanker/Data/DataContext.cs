@@ -9,6 +9,7 @@ namespace TaylorSwiftAlbumRanker.Data
         
         }
         
-        public DbSet <Users> Users { get; set; } 
+        public DbSet <User> Users { get; set; } 
+        public DbSet<Album> Albums { get; set; }
     }
 }

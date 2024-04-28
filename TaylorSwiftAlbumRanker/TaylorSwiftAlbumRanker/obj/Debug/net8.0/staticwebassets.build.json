@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ixVheZpJkNinzJ4FVh54HG9aLYwY5UW+lkfW7Wrea8Q=",
+  "Hash": "TAQ0t498edCQWe/o/EbSEEKqBht2446SJGSNZ6GxaN8=",
   "Source": "TaylorSwiftAlbumRanker",
   "BasePath": "_content/TaylorSwiftAlbumRanker",
   "Mode": "Default",
@@ -11,10 +11,10 @@
       "Version": 2,
       "Source": "TaylorSwiftAlbumRanker.Client",
       "GetPublishAssetsTargets": "ComputeFilesToPublish;GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "_PublishingBlazorWasmProject=true;BuildProjectReferences=false;ResolveAssemblyReferencesFindRelatedSatellites=true",
+      "AdditionalPublishProperties": "_PublishingBlazorWasmProject=true;BuildProjectReferences=false;ResolveAssemblyReferencesFindRelatedSatellites=true;Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "NoBuild;RuntimeIdentifier;WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalBuildPropertiesToRemove": "RuntimeIdentifier;SelfContained;WebPublishProfileFile;TargetFramework"
     }
   ],
@@ -7938,6 +7938,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\debut.png",
+      "SourceId": "TaylorSwiftAlbumRanker",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\",
+      "BasePath": "_content/TaylorSwiftAlbumRanker",
+      "RelativePath": "images/debut.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\debut.png"
     }
   ]
 }
