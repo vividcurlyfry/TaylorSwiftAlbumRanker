@@ -1,0 +1,51 @@
+﻿@page "/edit-user"
+@page "/edit-user/{id:int}"
+@inject IUsersService UserService
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+@if(Id == null)
+{
+    <h3>Add User</h3>
+}
+else @if (@user != null)
+{
+    <h3>Edit @user.Username</h3>
+}
+
+
+<EditForm Model="user" OnSubmit="HandleSubmit" FormName="editUser">
+    <label>Username</label>
+    <InputText @bind-Value="user!.Username"/>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @if(Id != null){
+        <DeleteUserButton Id="user.Id" />
+    }
+</EditForm>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    [SupplyParameterFromForm]
+    User user { get; set; } = new User { Username = string.Empty, RolePermission = 0 };
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != null)
+        {
+            user = await UserService.GetUserById((int)Id);
+        }
+    }
+
+    async Task HandleSubmit()
+    {
+        if(Id == null)
+        {
+            await UserService.AddUser(user);
+        }
+        else
+        {
+            await UserService.UpdateUser(user);
+        }
+    }
+}
