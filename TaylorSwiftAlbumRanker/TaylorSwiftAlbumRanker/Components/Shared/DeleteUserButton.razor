@@ -1,16 +1,18 @@
 ﻿@inject NavigationManager NavigationManager
+@inject IUsersService UserService
 @rendermode InteractiveServer
 
-<button @onclick="DeleteUser" class="btn btn-primary">Delete User</button>
+<button @onclick="DeleteUser" type="button" class="btn btn-danger">Delete</button>
 
 @code {
 
     [Parameter]
     public int Id { get; set; }
 
-    void DeleteUser()
+    async void DeleteUser()
     {
-        NavigationManager.NavigateTo($"/edit-user/{Id}");
+        await UserService.DeleteUser((int)Id);
+        NavigationManager.NavigateTo("/users");
     }
 
 }

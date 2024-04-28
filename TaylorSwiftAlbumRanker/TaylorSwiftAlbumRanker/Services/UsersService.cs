@@ -53,7 +53,7 @@ namespace TaylorSwiftAlbumRanker.Services
             var dbUser = await _context.Users.FindAsync(user.Id);
             if (dbUser != null)
             {
-                dbUser.Username = dbUser.Username;
+                dbUser.Username = user.Username;
                 await _context.SaveChangesAsync();
                 return dbUser;
             }
