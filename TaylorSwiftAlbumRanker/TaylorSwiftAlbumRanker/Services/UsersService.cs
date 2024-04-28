@@ -48,6 +48,11 @@ namespace TaylorSwiftAlbumRanker.Services
             return await _context.Users.FindAsync(id);  
         }
 
+        public async Task<int> GetUsersCount()
+        {
+            return await _context.Users.CountAsync();
+        }
+
         public async Task<User> UpdateUser(User user)
         {
             var dbUser = await _context.Users.FindAsync(user.Id);

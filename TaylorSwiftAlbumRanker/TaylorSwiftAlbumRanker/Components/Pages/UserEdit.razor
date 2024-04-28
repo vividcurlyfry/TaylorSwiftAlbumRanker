@@ -1,6 +1,7 @@
 ﻿@page "/edit-user"
 @page "/edit-user/{id:int}"
 @inject IUsersService UserService
+@inject IPermissionsService PermissionsService
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
@@ -23,11 +24,23 @@ else @if (@user != null)
     }
 </EditForm>
 
+<h3>Role</h3>
+
+<h3>Permissions</h3>
+<ul>
+
+
+</ul>
+
 @code {
     [Parameter]
     public int? Id { get; set; }
     [SupplyParameterFromForm]
     User user { get; set; } = new User { Username = string.Empty, RolePermission = 0 };
+
+    Role role = new Role { RoleName = string.Empty, RoleDescription = string.Empty };
+    List<Permission>? permissions = new List<Permission>();
+
 
     protected override async Task OnParametersSetAsync()
     {

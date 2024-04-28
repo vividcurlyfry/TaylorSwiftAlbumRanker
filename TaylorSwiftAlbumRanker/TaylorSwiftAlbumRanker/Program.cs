@@ -16,6 +16,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddScoped<IUsersService, UsersService>(); //register user service
 builder.Services.AddScoped<IAlbumsService, AlbumsService>();
+builder.Services.AddScoped<IPermissionsService, PermissionsService>();
 
 var app = builder.Build();
 
