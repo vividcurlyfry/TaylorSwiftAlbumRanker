@@ -3,8 +3,8 @@ using TaylorSwiftAlbumRanker.Entities;
 
 namespace TaylorSwiftAlbumRanker.Services
 {
-    public interface IPermissionsService
+    public interface IUserRolesService
     {
-        Task<Permission> GetPermissionByName(string name);     
+        Task<List<UserRoles>> GetAllRolesForUser(string username);
     }
 }

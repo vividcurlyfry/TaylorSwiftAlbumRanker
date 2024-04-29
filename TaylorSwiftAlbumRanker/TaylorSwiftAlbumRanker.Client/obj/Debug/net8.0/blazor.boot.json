@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "TaylorSwiftAlbumRanker.Client",
   "resources": {
-    "hash": "sha256-8JY0tkLa0/adZQpgZByYhKf8xe8758JVQBnfjJnMoHY=",
+    "hash": "sha256-8GcQscjDlS8oBVKi+xJNi/2DM52Dd1lRITJPyKhfo30=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.byme4bhi16.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-VCfYgt1mcjITabSTosCDVZ+68ea3Z7kakTFaLNLG+18=",
       "netstandard.wasm": "sha256-YOZxxR9PM3Dltcijfb0Q4FD39DkWZbZ1e2ScbZDvWJ4=",
       "System.Private.CoreLib.wasm": "sha256-NrT1QkAzVU//2wgK9vXdq77lCGvLJ4IOZ+Aegesyanc=",
-      "TaylorSwiftAlbumRanker.Client.wasm": "sha256-5eFRuoSgf2KVPoB/fX5i13aqxQsagg7sYTvTAFTvnvU="
+      "TaylorSwiftAlbumRanker.Client.wasm": "sha256-AX1rmsZ24YWVPJCOS6h8TnrJ3L/6FSN0YDfH9a4IOrc="
     },
     "pdb": {
-      "TaylorSwiftAlbumRanker.Client.pdb": "sha256-Q8cE9YQh+qg6e05ls5TXO1lo1jOaSc44sCbFKZTp2M8="
+      "TaylorSwiftAlbumRanker.Client.pdb": "sha256-uoEVxnFa0meXhgtIitst5W2iLh62h0pl0DbVo8CPYSg="
     }
   },
   "cacheBootResources": true,

@@ -17,6 +17,10 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<IUsersService, UsersService>(); //register user service
 builder.Services.AddScoped<IAlbumsService, AlbumsService>();
 builder.Services.AddScoped<IPermissionsService, PermissionsService>();
+builder.Services.AddScoped<IRolePermissionsService, RolePermissionsService>();
+builder.Services.AddScoped<IRolesService, RolesService>();
+builder.Services.AddScoped<IUserRolesService, UserRolesService>();
+//builder.Services.AddScoped<IRankingService, PermissionsService>();
 
 var app = builder.Build();
 

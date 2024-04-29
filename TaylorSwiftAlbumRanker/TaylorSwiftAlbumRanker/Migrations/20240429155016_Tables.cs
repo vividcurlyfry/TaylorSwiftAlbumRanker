@@ -1,42 +1,39 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace TaylorSwiftAlbumRanker.Migrations
 {
     /// <inheritdoc />
-    public partial class ForeignKeys : Migration
+    public partial class Tables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Albums",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AlbumName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PictureHyperlink = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Albums", x => x.Id);
-                });
+               name: "Albums",
+               columns: table => new
+               {
+                   Id = table.Column<int>(type: "int", nullable: false)
+                       .Annotation("SqlServer:Identity", "1, 1"),
+                   AlbumName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                   PictureHyperlink = table.Column<string>(type: "nvarchar(450)", nullable: false)
+               },
+               constraints: table =>
+               {
+                   table.PrimaryKey("PK_Albums", x => x.Id);
+               });
 
             migrationBuilder.CreateTable(
                 name: "Permissions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PermissionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PermissionDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PermissionName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PermissionDescription = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Permissions", x => x.Id);
+                    table.PrimaryKey("PK_Permissions", x => x.PermissionName);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,8 +58,8 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleId = table.Column<int>(type: "int", nullable: false),
-                    PermissionId = table.Column<int>(type: "int", nullable: false),
+                    RoleName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PermissionName = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CanPerform = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -74,14 +71,12 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RoleDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    RoleName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleDescription = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roles", x => x.Id);
+                    table.PrimaryKey("PK_Roles", x => x.RoleName);
                 });
 
             migrationBuilder.CreateTable(
@@ -90,13 +85,27 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RolePermission = table.Column<int>(type: "int", nullable: false)
+                    Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleUserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                 name: "UserRoles",
+                 columns: table => new
+                 {
+                     Id = table.Column<int>(type: "int", nullable: false)
+                         .Annotation("SqlServer:Identity", "1, 1"),
+                     Username = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                     RoleName = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                 },
+                 constraints: table =>
+                 {
+                     table.PrimaryKey("PK_Users", x => x.Id);
+                 });
         }
 
         /// <inheritdoc />

@@ -2,6 +2,9 @@
 @page "/edit-user/{id:int}"
 @inject IUsersService UserService
 @inject IPermissionsService PermissionsService
+@inject IRolePermissionsService RolePermissionService
+@inject IRolesService RoleService
+@inject IUserRolesService UserRolesService
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
@@ -12,34 +15,60 @@
 else @if (@user != null)
 {
     <h3>Edit @user.Username</h3>
+    <h3>Roles</h3>
+    <ul>
+        @foreach (var role in userRoles)
+        {
+            <li>@role.RoleName</li>
+            <span>@GetRoleDescription(role.RoleName)</span>
+        }
+    </ul>
+
+    <h3>Permissions</h3>
+    <ul>
+        @foreach (var permission in permissions)
+        {
+            <span>@permission.PermissionName</span>
+            <span>@permission.PermissionDescription</span>
+        }
+
+    </ul>
 }
 
 
-<EditForm Model="user" OnSubmit="HandleSubmit" FormName="editUser">
+<EditForm Model="@user" OnSubmit="HandleSubmit" FormName="editUser">
     <label>Username</label>
-    <InputText @bind-Value="user!.Username"/>
+    <span>Possible Roles</span>
+    <ul>
+        @foreach (var role in allRoles)
+        {
+            <span>@role.RoleName</span>
+            <span>@role.RoleDescription</span>
+        }
+
+    </ul>
+    <InputText @bind-Value="@user!.Username"/>
+    @foreach(var roles in userRoles)
+    {
+        <InputText @bind-Value="@roles!.RoleName"></InputText>
+    }
     <button type="submit" class="btn btn-primary">Submit</button>
     @if(Id != null){
         <DeleteUserButton Id="user.Id" />
     }
 </EditForm>
 
-<h3>Role</h3>
-
-<h3>Permissions</h3>
-<ul>
-
-
-</ul>
-
 @code {
     [Parameter]
     public int? Id { get; set; }
     [SupplyParameterFromForm]
-    User user { get; set; } = new User { Username = string.Empty, RolePermission = 0 };
+    User user { get; set; } = new User { Username = string.Empty, RoleName = string.Empty };
 
-    Role role = new Role { RoleName = string.Empty, RoleDescription = string.Empty };
+    List<RolePermissions> role_permissions = new List<RolePermissions>();
+
+    List<UserRoles> userRoles = new List<UserRoles>();
     List<Permission>? permissions = new List<Permission>();
+    List<Role>? allRoles = new List<Role>();
 
 
     protected override async Task OnParametersSetAsync()
@@ -47,7 +76,16 @@ else @if (@user != null)
         if (Id != null)
         {
             user = await UserService.GetUserById((int)Id);
+            var role_name = user.RoleName;
+            role_permissions = await RolePermissionService.GetPermissionsOfRole(role_name);
+            allRoles = await RoleService.GetAllRoles();
         }
+    }
+
+    async Task<string> GetRoleDescription(string role_name)
+    {
+        var role = await RoleService.GetRoleByName(role_name);
+        return role.RoleDescription;
     }
 
     async Task HandleSubmit()

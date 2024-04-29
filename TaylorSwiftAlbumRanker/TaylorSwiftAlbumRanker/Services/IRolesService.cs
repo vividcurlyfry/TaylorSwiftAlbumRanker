@@ -5,5 +5,7 @@ namespace TaylorSwiftAlbumRanker.Services
 {
     public interface IRolesService
     {
-        Task<Role> GetRoleById(int id);     }
+        Task<Role> GetRoleByName(string name);    
+        Task<List<Role>> GetAllRoles();
+    }
 }

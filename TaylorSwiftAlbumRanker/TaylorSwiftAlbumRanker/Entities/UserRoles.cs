@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TaylorSwiftAlbumRanker.Entities
 {
-    public class Permission
+    public class UserRoles
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("PermissionName")]
-        public required string PermissionName { get; set; }
-        public required string PermissionDescription { get; set; }
+        [Column("Username")]
+        public required string Username { get; set; }
+        public required string RoleName { get; set; }
     }
 }

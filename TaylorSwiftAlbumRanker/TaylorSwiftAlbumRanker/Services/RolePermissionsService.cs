@@ -4,23 +4,23 @@ using TaylorSwiftAlbumRanker.Entities;
 
 namespace TaylorSwiftAlbumRanker.Services
 {
-    public class RolePermissionService : IRolePermissionService
+    public class RolePermissionsService : IRolePermissionsService
     {
         private readonly DataContext _context;
 
-        public RolePermissionService(DataContext context)
+        public RolePermissionsService(DataContext context)
         {
             _context = context;
         }
 
-        public Task<List<Permission>> GetPermissionsOfRole(int roleId)
+        public async Task<List<RolePermissions>> GetPermissionsOfRole(string roleName)
         {
-            throw new NotImplementedException();
+            return await _context.RolePermissions.Where(rp => rp.RoleName.Equals(roleName)).ToListAsync();
         }
 
-        public Task<Role> GetRoleOfUser(int userId)
+        public async Task<RolePermissions> GetRolePermissionById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.RolePermissions.FindAsync(id);
         }
     }
 }

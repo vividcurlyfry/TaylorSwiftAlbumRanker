@@ -13,9 +13,15 @@ namespace TaylorSwiftAlbumRanker.Services
             _context = context;
         }
 
-        public Task<Role> GetRoleById(int id)
+        public async Task<List<Role>> GetAllRoles()
         {
-            throw new NotImplementedException();
+            var roles = await _context.Roles.ToListAsync();
+            return roles;
+        }
+
+        public async Task<Role> GetRoleByName(string name)
+        {
+            return await _context.Roles.FindAsync(name);
         }
     }
 }

@@ -12,8 +12,8 @@ using TaylorSwiftAlbumRanker.Data;
 namespace TaylorSwiftAlbumRanker.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240428162954_ForeignKeys")]
-    partial class ForeignKeys
+    [Migration("20240429163631_UserRoles")]
+    partial class UserRoles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,21 +48,16 @@ namespace TaylorSwiftAlbumRanker.Migrations
 
             modelBuilder.Entity("TaylorSwiftAlbumRanker.Entities.Permission", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("PermissionName")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("PermissionName");
 
                     b.Property<string>("PermissionDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PermissionName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("PermissionName");
 
                     b.ToTable("Permissions");
                 });
@@ -94,26 +89,21 @@ namespace TaylorSwiftAlbumRanker.Migrations
 
             modelBuilder.Entity("TaylorSwiftAlbumRanker.Entities.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("RoleName")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("RoleName");
 
                     b.Property<string>("RoleDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("RoleName");
 
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("TaylorSwiftAlbumRanker.Entities.RolePermission", b =>
+            modelBuilder.Entity("TaylorSwiftAlbumRanker.Entities.RolePermissions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -121,13 +111,10 @@ namespace TaylorSwiftAlbumRanker.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("CanPerform")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("PermissionId")
+                    b.Property<int>("PermissionName")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int>("RoleName")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -143,8 +130,9 @@ namespace TaylorSwiftAlbumRanker.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("RolePermission")
-                        .HasColumnType("int");
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -153,6 +141,22 @@ namespace TaylorSwiftAlbumRanker.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("TaylorSwiftAlbumRanker.Entities.UserRoles", b =>
+                {
+                    b.Property<string>("Username")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("Username");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Username");
+
+                    b.ToTable("UserRoles");
                 });
 #pragma warning restore 612, 618
         }
