@@ -20,7 +20,7 @@ else @if (@user != null)
         @foreach (var role in userRoles)
         {
             <li>@role.RoleName</li>
-            <span>@GetRoleDescription(role.RoleName)</span>
+            //<span>@GetRoleDescription(role.RoleName)</span>
         }
     </ul>
 
@@ -28,8 +28,8 @@ else @if (@user != null)
     <ul>
         @foreach (var permission in permissions)
         {
-            <span>@permission.PermissionName</span>
-            <span>@permission.PermissionDescription</span>
+            <li>@permission.PermissionName</li>
+            //<span>@GetPermissionDescription(permission.PermissionName).Result.PermissionDescription</span>
         }
 
     </ul>
@@ -37,12 +37,11 @@ else @if (@user != null)
 
 
 <EditForm Model="@user" OnSubmit="HandleSubmit" FormName="editUser">
-    <label>Username</label>
     <span>Possible Roles</span>
     <ul>
         @foreach (var role in allRoles)
         {
-            <span>@role.RoleName</span>
+            <li>@role.RoleName</li>
             <span>@role.RoleDescription</span>
         }
 
@@ -52,6 +51,8 @@ else @if (@user != null)
     {
         <InputText @bind-Value="@roles!.RoleName"></InputText>
     }
+    <div></div>
+    <div></div>
     <button type="submit" class="btn btn-primary">Submit</button>
     @if(Id != null){
         <DeleteUserButton Id="user.Id" />
@@ -67,7 +68,7 @@ else @if (@user != null)
     List<RolePermissions> role_permissions = new List<RolePermissions>();
 
     List<UserRoles> userRoles = new List<UserRoles>();
-    List<Permission>? permissions = new List<Permission>();
+    List<RolePermissions>? permissions = new List<RolePermissions>();
     List<Role>? allRoles = new List<Role>();
 
 
@@ -79,13 +80,21 @@ else @if (@user != null)
             var role_name = user.RoleName;
             role_permissions = await RolePermissionService.GetPermissionsOfRole(role_name);
             allRoles = await RoleService.GetAllRoles();
+            userRoles = await UserRolesService.GetAllRolesForUser(user.Username);
+            permissions = await RolePermissionService.GetPermissionsOfRole(role_name);
         }
     }
 
-    async Task<string> GetRoleDescription(string role_name)
+    async Task<Role> GetRoleDescription(string role_name)
     {
         var role = await RoleService.GetRoleByName(role_name);
-        return role.RoleDescription;
+        return role;
+    }
+
+    async Task<Permission> GetPermissionDescription(string role_name)
+    {
+        var permission = await PermissionsService.GetPermissionByName(role_name);
+        return permission;
     }
 
     async Task HandleSubmit()
