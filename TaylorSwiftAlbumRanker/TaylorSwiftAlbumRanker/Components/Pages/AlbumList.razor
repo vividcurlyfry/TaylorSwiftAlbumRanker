@@ -20,12 +20,14 @@ else
 {
         @foreach(var album in albums)
         {
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@album.PictureHyperlink"alt="@album.AlbumName">
-                <div class="card-body">
-                    <h5 class="card-title">@album.AlbumName</h5>
-                    <p class="card-text">OVERALL RANKING DISPLAYED HERE</p>
+        <div style="padding-bottom: 2rem;">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@album.PictureHyperlink"alt="@album.AlbumName">
+                    <div class="card-body">
+                        <h5 class="card-title">@album.AlbumName</h5>
+                        <p class="card-text">Ranking: @album.Ranking</p>
 
+                    </div>
                 </div>
             </div>
         }       

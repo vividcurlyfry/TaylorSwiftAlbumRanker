@@ -1,16 +1,20 @@
 ﻿@page "/users"
 @inject IUsersService UsersService
 @attribute [StreamRendering(true)]
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
 <h3>UserList</h3>
 
 @if(users == null)
 {
     <span>Loading...</span>
+    <div></div>
 }
 else if (users.Count == 0)
 {
     <span>No users found.</span>
+    <div></div>
 }
 else
 {
@@ -23,7 +27,7 @@ else
     <div>Number of users is: @user_count</div>
 }
 
-<CreateUserButton />
+<button type="button" @onclick="CreateUser" class="btn btn-primary">Create New User</button>
 
 @code {
     List<User>? users = new List<User>();
@@ -33,4 +37,10 @@ else
         users = await  UsersService.GetAllUsers();
         user_count = await UsersService.GetUsersCount();
     }
+
+    void CreateUser()
+    {
+        NavigationManager.NavigateTo("/edit-user");
+    }
+
 }

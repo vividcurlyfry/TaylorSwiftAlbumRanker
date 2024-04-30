@@ -47,7 +47,7 @@
     [Parameter]
     public int? Id { get; set; }
     [SupplyParameterFromForm]
-    User user { get; set; } = new User { Username = string.Empty, RoleName = string.Empty };
+    User user { get; set; } = new User { Username = string.Empty };
 
     List<RolePermissions> rolePermissions = new List<RolePermissions>();
 
@@ -61,7 +61,6 @@
         if (Id != null)
         {
             user = await UserService.GetUserById((int)Id);
-            var role_name = user.RoleName;
             allRoles = await RoleService.GetAllRoles();
             userRoles = await UserRolesService.GetAllRolesForUser(user.Username);
             foreach (var role in userRoles)
@@ -75,12 +74,14 @@
     {
         var user_role = await UserRolesService.GetRecordOfUserRole(user.Username, roleName);
         await UserRolesService.DeleteUserRole(user_role.Id);
+        NavigationManager.NavigateTo("/edit-user/" + (user.Id.ToString()));
     }
 
     void AddRole(string newRoleName)
     {
         var userRole = new UserRoles { Username = user.Username, RoleName = newRoleName };
         UserRolesService.AddUserRole(userRole);
+        NavigationManager.NavigateTo("/edit-user/" + (user.Id.ToString())); //hacky way of providing user feedback, would probably use a popup instead irl
     }
 
     async Task<Role> GetRoleDescription(string role_name)

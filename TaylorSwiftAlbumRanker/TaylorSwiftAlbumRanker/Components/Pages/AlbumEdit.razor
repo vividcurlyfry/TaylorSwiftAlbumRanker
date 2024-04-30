@@ -8,17 +8,32 @@
 <EditForm Model="album" OnSubmit="HandleSubmit" FormName="editAlbum">
     <label>Album</label>
     <InputText @bind-Value="album.AlbumName">Submit</InputText>
-    <InputText @bind-Value="album.PictureHyperlink">Submit</InputText>
+    <InputText @bind-Value="imageName">Submit</InputText>
+    <InputText @bind-Value="ranking">Submit</InputText>
+    <div>Upload your image to wwwroot/images and enter the file name!</div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
 @code {
     [Parameter]
     public int? Id { get; set; }
     [SupplyParameterFromForm]
-    Album album { get; set; } = new Album { AlbumName = string.Empty, PictureHyperlink = string.Empty };
+    Album album { get; set; } = new Album { AlbumName = string.Empty, PictureHyperlink = string.Empty, Ranking = 0};
+    string imageName = "";
+    string ranking = "";
 
     async Task HandleSubmit()
     {
+        try
+        {
+            album.Ranking = Int32.Parse(ranking);
+        }
+        catch (FormatException e)
+        {
+            Console.WriteLine(e.Message);
+        };
+
+        imageName = "images/" + imageName;
+        album.PictureHyperlink = imageName;
         await AlbumService.AddAlbum(album);
     }
 }

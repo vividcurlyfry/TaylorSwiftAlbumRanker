@@ -14,7 +14,6 @@ namespace TaylorSwiftAlbumRanker.Data
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RolePermissions> RolePermissions { get; set; }
-        public DbSet<Ranking> Ranking { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }
     }
 }
