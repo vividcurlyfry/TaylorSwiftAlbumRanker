@@ -55,7 +55,7 @@ namespace TaylorSwiftAlbumRanker.Services
 
         public async Task<User> UpdateUser(User user)
         {
-            var dbUser = await _context.Users.FindAsync(user.Username);
+            var dbUser = await _context.Users.FindAsync(user.Id);
             if (dbUser != null)
             {
                 dbUser.Username = user.Username;

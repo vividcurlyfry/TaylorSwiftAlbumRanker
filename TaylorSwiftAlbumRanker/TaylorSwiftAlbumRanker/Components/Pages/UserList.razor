@@ -1,5 +1,6 @@
 ﻿@page "/users"
 @inject IUsersService UsersService
+@inject IUserRolesService UserRolesService
 @attribute [StreamRendering(true)]
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
@@ -24,18 +25,28 @@ else
             <li>@user.Username <EditUserButton Id= "user.Id"/></li>
         }
     </ul>
-    <div>Number of users is: @user_count</div>
+    <div>Number of users: @userCount</div>
+    <div>
+        <ul>
+            <li>Number of Admins: @countList[0]</li>
+            <li>Number of AlbumEditers:  @countList[1]</li>
+            <li>Number of AlbumViewers:  @countList[2]</li>
+            <li>Number of UserControllers:  @countList[3]</li>
+        </ul>
+    </div>
 }
 
 <button type="button" @onclick="CreateUser" class="btn btn-primary">Create New User</button>
 
 @code {
-    List<User>? users = new List<User>();
-    int user_count = 0;
+    List<User> users = new List<User>();
+    int userCount = 0;
+    List<int> countList = new List<int>();
     protected override async Task OnInitializedAsync()
     {   
         users = await  UsersService.GetAllUsers();
-        user_count = await UsersService.GetUsersCount();
+        userCount = await UsersService.GetUsersCount();
+        countList = await UserRolesService.GetGroupOfUsersPerRole();
     }
 
     void CreateUser()

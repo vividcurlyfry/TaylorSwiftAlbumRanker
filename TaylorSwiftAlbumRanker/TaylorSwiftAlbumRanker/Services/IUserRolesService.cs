@@ -5,9 +5,10 @@ namespace TaylorSwiftAlbumRanker.Services
 {
     public interface IUserRolesService
     {
-        Task<List<UserRoles>> GetAllRolesForUser(string username);
+        Task<List<UserRoles>> GetAllRolesForUser(int userId);
         Task<bool>  DeleteUserRole(int id);
         Task<UserRoles> AddUserRole(UserRoles userRole);
-        Task<UserRoles> GetRecordOfUserRole(string username, string rolename);
+        Task<UserRoles> GetRecordOfUserRole(int userId, string rolename);
+        Task<List<int>> GetGroupOfUsersPerRole();
     }
 }

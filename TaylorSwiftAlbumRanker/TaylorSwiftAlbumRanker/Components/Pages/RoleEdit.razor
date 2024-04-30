@@ -62,7 +62,7 @@
         {
             user = await UserService.GetUserById((int)Id);
             allRoles = await RoleService.GetAllRoles();
-            userRoles = await UserRolesService.GetAllRolesForUser(user.Username);
+            userRoles = await UserRolesService.GetAllRolesForUser(user.Id);
             foreach (var role in userRoles)
             {
                 userRoleNames.Add(role.RoleName);
@@ -72,14 +72,14 @@
 
     async Task DeleteRole(string roleName)
     {
-        var user_role = await UserRolesService.GetRecordOfUserRole(user.Username, roleName);
+        var user_role = await UserRolesService.GetRecordOfUserRole(user.Id, roleName);
         await UserRolesService.DeleteUserRole(user_role.Id);
         NavigationManager.NavigateTo("/edit-user/" + (user.Id.ToString()));
     }
 
     void AddRole(string newRoleName)
     {
-        var userRole = new UserRoles { Username = user.Username, RoleName = newRoleName };
+        var userRole = new UserRoles { userId = user.Id, RoleName = newRoleName };
         UserRolesService.AddUserRole(userRole);
         NavigationManager.NavigateTo("/edit-user/" + (user.Id.ToString())); //hacky way of providing user feedback, would probably use a popup instead irl
     }
