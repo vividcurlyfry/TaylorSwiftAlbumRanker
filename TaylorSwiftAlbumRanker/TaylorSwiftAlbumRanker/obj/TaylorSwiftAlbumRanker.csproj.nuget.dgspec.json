@@ -142,6 +142,10 @@
               "target": "Package",
               "version": "[8.0.0-preview.6.24214.1, )"
             },
+            "DevExpress.Blazor.ProjectTemplates": {
+              "target": "Package",
+              "version": "[23.2.4, )"
+            },
             "Microsoft.AspNetCore.Components.WebAssembly.Server": {
               "target": "Package",
               "version": "[8.0.4, )"

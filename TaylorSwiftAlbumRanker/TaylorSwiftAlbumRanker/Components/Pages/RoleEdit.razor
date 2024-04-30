@@ -1,0 +1,102 @@
+﻿@page "/edit-roles"
+@page "/edit-roles/{id:int}"
+@inject IUsersService UserService
+@inject IPermissionsService PermissionsService
+@inject IRolePermissionsService RolePermissionService
+@inject IRolesService RoleService
+@inject IUserRolesService UserRolesService
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+@if (userRoles != null)
+{
+    <h3>Add Role</h3>
+    <h3>Roles</h3>
+    <ul>
+        @foreach (var role in userRoles)
+        {
+            <li>@role.RoleName</li>
+            //<span>@GetRoleDescription(role.RoleName)</span>
+        }
+    </ul>
+}
+
+
+<EditForm Model="@user" OnSubmit="HandleSubmit" FormName="editRoles">
+    <span>Roles</span>
+    <ul>
+        @foreach (var role in allRoles)
+        {
+            <li>@role.RoleName</li>
+            <span>@role.RoleDescription</span>
+            if (@userRoleNames.Contains(role.RoleName))
+            {
+                <button @onclick="()=>DeleteRole(role.RoleName)" type="button" class="btn btn-danger">Delete</button>
+            }
+            else
+            {
+                <button @onclick="()=>AddRole(role.RoleName)" type="button" class="btn btn-primary">Add Role</button>
+            }
+        }
+    </ul>
+    <button type="submit" class="btn btn-primary">Done</button>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+    [SupplyParameterFromForm]
+    User user { get; set; } = new User { Username = string.Empty, RoleName = string.Empty };
+
+    List<RolePermissions> rolePermissions = new List<RolePermissions>();
+
+    List<UserRoles> userRoles = new List<UserRoles>();
+    List<RolePermissions>? permissions = new List<RolePermissions>();
+    List<Role>? allRoles = new List<Role>();
+    List<string> userRoleNames = new List<string>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != null)
+        {
+            user = await UserService.GetUserById((int)Id);
+            var role_name = user.RoleName;
+            allRoles = await RoleService.GetAllRoles();
+            userRoles = await UserRolesService.GetAllRolesForUser(user.Username);
+            foreach (var role in userRoles)
+            {
+                userRoleNames.Add(role.RoleName);
+            }
+        }
+    }
+
+    async Task DeleteRole(string roleName)
+    {
+        var user_role = await UserRolesService.GetRecordOfUserRole(user.Username, roleName);
+        await UserRolesService.DeleteUserRole(user_role.Id);
+    }
+
+    void AddRole(string newRoleName)
+    {
+        var userRole = new UserRoles { Username = user.Username, RoleName = newRoleName };
+        UserRolesService.AddUserRole(userRole);
+    }
+
+    async Task<Role> GetRoleDescription(string role_name)
+    {
+        var role = await RoleService.GetRoleByName(role_name);
+        return role;
+    }
+
+    async Task<Permission> GetPermissionDescription(string role_name)
+    {
+        var permission = await PermissionsService.GetPermissionByName(role_name);
+        return permission;
+    }
+
+    async Task HandleSubmit()
+    {
+        NavigationManager.NavigateTo("/edit-user/" + (user.Id.ToString()));
+    }
+}

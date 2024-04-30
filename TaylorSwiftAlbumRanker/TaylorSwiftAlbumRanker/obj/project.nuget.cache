@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "SH2WjsCtuseq/zbxqXlBWSJzMUjMMZd68jo4qO6Jwl5s1JXVD1wC2WSKjwdcTe1a47eb4aMJ3JhVQmO9UjLgHQ==",
+  "dgSpecHash": "jqWI/HwDzIV8co/un6CWwRViWmxGdEBD1WZmofU/ZW4UjT6NEFZSuttld7L9i6mwIDKgeckatUUQkxZnDe/AVA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user-pc\\.nuget\\packages\\aspire.microsoft.entityframeworkcore.sqlserver\\8.0.0-preview.6.24214.1\\aspire.microsoft.entityframeworkcore.sqlserver.8.0.0-preview.6.24214.1.nupkg.sha512",
     "C:\\Users\\user-pc\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\user-pc\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\user-pc\\.nuget\\packages\\devexpress.blazor.projecttemplates\\23.2.4\\devexpress.blazor.projecttemplates.23.2.4.nupkg.sha512",
     "C:\\Users\\user-pc\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\user-pc\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.4\\microsoft.aspnetcore.authorization.8.0.4.nupkg.sha512",
     "C:\\Users\\user-pc\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.4\\microsoft.aspnetcore.components.8.0.4.nupkg.sha512",

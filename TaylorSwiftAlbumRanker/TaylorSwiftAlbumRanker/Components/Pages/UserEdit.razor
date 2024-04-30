@@ -15,46 +15,16 @@
 else @if (@user != null)
 {
     <h3>Edit @user.Username</h3>
-    <h3>Roles</h3>
-    <ul>
-        @foreach (var role in userRoles)
-        {
-            <li>@role.RoleName</li>
-            //<span>@GetRoleDescription(role.RoleName)</span>
-        }
-    </ul>
-
-    <h3>Permissions</h3>
-    <ul>
-        @foreach (var permission in permissions)
-        {
-            <li>@permission.PermissionName</li>
-            //<span>@GetPermissionDescription(permission.PermissionName).Result.PermissionDescription</span>
-        }
-
-    </ul>
 }
 
 
 <EditForm Model="@user" OnSubmit="HandleSubmit" FormName="editUser">
-    <span>Possible Roles</span>
-    <ul>
-        @foreach (var role in allRoles)
-        {
-            <li>@role.RoleName</li>
-            <span>@role.RoleDescription</span>
-        }
-
-    </ul>
     <InputText @bind-Value="@user!.Username"/>
-    @foreach(var roles in userRoles)
-    {
-        <InputText @bind-Value="@roles!.RoleName"></InputText>
-    }
     <div></div>
-    <div></div>
+    <button Id="user.Id" @onclick="EditRoles" type="button" class="btn btn-primary">Edit Roles</button>
     <button type="submit" class="btn btn-primary">Submit</button>
-    @if(Id != null){
+    @if(Id != null)
+    {
         <DeleteUserButton Id="user.Id" />
     }
 </EditForm>
@@ -65,36 +35,13 @@ else @if (@user != null)
     [SupplyParameterFromForm]
     User user { get; set; } = new User { Username = string.Empty, RoleName = string.Empty };
 
-    List<RolePermissions> role_permissions = new List<RolePermissions>();
-
-    List<UserRoles> userRoles = new List<UserRoles>();
-    List<RolePermissions>? permissions = new List<RolePermissions>();
-    List<Role>? allRoles = new List<Role>();
-
-
     protected override async Task OnParametersSetAsync()
     {
         if (Id != null)
         {
             user = await UserService.GetUserById((int)Id);
             var role_name = user.RoleName;
-            role_permissions = await RolePermissionService.GetPermissionsOfRole(role_name);
-            allRoles = await RoleService.GetAllRoles();
-            userRoles = await UserRolesService.GetAllRolesForUser(user.Username);
-            permissions = await RolePermissionService.GetPermissionsOfRole(role_name);
         }
-    }
-
-    async Task<Role> GetRoleDescription(string role_name)
-    {
-        var role = await RoleService.GetRoleByName(role_name);
-        return role;
-    }
-
-    async Task<Permission> GetPermissionDescription(string role_name)
-    {
-        var permission = await PermissionsService.GetPermissionByName(role_name);
-        return permission;
     }
 
     async Task HandleSubmit()
@@ -107,5 +54,10 @@ else @if (@user != null)
         {
             await UserService.UpdateUser(user);
         }
+    }
+
+    void EditRoles()
+    {
+        NavigationManager.NavigateTo("/edit-roles/"+(user.Id.ToString()));
     }
 }
