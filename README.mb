@@ -1,1 +1,8 @@
 TaylorSwiftAlbumRanker
+
+This is a .NET 8.0.204, Blazor Server Side program with a SQL Express database.
+To run this program:
+1. Change the appsettings.json Data Source to match a SQL Express data source on the local machine.
+2. Open the Package Manager Console and enter "dotnet ef migrations add Tables"
+3. In the PCM, enter "dotnet ef database update" 
+4. I'm not sure how to run a blazor app from the command line as "dotnet run" throws a lot of errors. Pressing F5 is what works! xD
