@@ -20,12 +20,12 @@ else
 {
         @foreach(var album in albums)
         {
-            <div style="padding-bottom: 2rem;">
+            <div style="padding-bottom: 1rem;">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="@album.PictureHyperlink"alt="@album.AlbumName">
                     <div class="card-body">
                         <h5 class="card-title">@album.AlbumName</h5>
-                    <p class="card-text">Ranking: @GetAlbumRank(album)</p>
+                    <p class="card-text">Average Ranking: @GetAlbumRank(album)</p>
                     </div>
                 </div>
             </div>
@@ -57,14 +57,21 @@ else
         NavigationManager.NavigateTo($"/rank-album/{id}");
     }
 
-    float GetAlbumRank(Album album)
+    string GetAlbumRank(Album album)
     {   try
         {
-            return album.Ranking / album.NumRanking;
+            return (album.Ranking / album.NumRanking).ToString();
         }
         catch
         {
-            return 0;
+            if (album.NumRanking == 0)
+                return "Not Ranked";
+
+            else
+            {
+                return "0";
+            }
+
         }
     }
 }

@@ -21,8 +21,52 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\1989.png",
+      "PackagePath": "staticwebassets\\images\\1989.png"
+    },
+    {
       "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\debut.png",
       "PackagePath": "staticwebassets\\images\\debut.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\evermore.png",
+      "PackagePath": "staticwebassets\\images\\evermore.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\fearless.png",
+      "PackagePath": "staticwebassets\\images\\fearless.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\fearlesstv.png",
+      "PackagePath": "staticwebassets\\images\\fearlesstv.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\folklore.png",
+      "PackagePath": "staticwebassets\\images\\folklore.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\lover.png",
+      "PackagePath": "staticwebassets\\images\\lover.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\midnights.png",
+      "PackagePath": "staticwebassets\\images\\midnights.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\red.png",
+      "PackagePath": "staticwebassets\\images\\red.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\reputation.png",
+      "PackagePath": "staticwebassets\\images\\reputation.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\speaknowtv.png",
+      "PackagePath": "staticwebassets\\images\\speaknowtv.png"
+    },
+    {
+      "Id": "D:\\Projects\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\TaylorSwiftAlbumRanker\\wwwroot\\images\\ttpd.png",
+      "PackagePath": "staticwebassets\\images\\ttpd.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.TaylorSwiftAlbumRanker.Microsoft.AspNetCore.StaticWebAssets.props",

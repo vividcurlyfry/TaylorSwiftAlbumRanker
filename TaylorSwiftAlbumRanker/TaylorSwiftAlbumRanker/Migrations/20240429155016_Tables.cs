@@ -126,7 +126,7 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 VALUES
            ('Taylor Swift', 'images/debut.png', 0,0),
            ('Fearless', 'images/fearless.png', 0,0),
-           ('Speak Now (Taylor's Version)', 'images/speaknow.png',0,0),
+           ('Speak Now (Taylor''s Version)', 'images/speaknowtv.png',0,0),
            ('Red', 'images/red.png', 0,0),
            ('1989', 'images/1989.png', 0,0),
            ('Reputation', 'images/reputation.png', 0,0),
