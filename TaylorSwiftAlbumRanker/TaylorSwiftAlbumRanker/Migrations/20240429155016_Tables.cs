@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.IdentityModel.Tokens;
+using System.Collections.Generic;
 using TaylorSwiftAlbumRanker.Entities;
 
 #nullable disable
@@ -119,23 +120,20 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 { "AlbumEditer", "Permission to edit albums."}
             });
 
-/*            migrationBuilder.InsertData(
-            table: "RolePermissions",
-            columns: new[] { "RoleName", "PermissionName" },
-            values: new object[,]
-            {
-                { "Admin","AddUser"},
-                { "Admin","DeleteUser"},
-                { "Admin","EditUserRole"},
-                { "Admin","ViewAlbums"},
-                { "Admin","EditAlbums"},
-                { "UserController","AddUser"},
-                { "UserController","DeleteUser"},
-                { "UserController","EditUserRole"},
-                { "AlbumViewer", "ViewAlbums"},
-                { "AlbumEditer", "EditAlbums"},
-                { "AlbumEditer", "ViewAlbums"}
-            });*/
+            migrationBuilder.Sql(@"INSERT INTO[dbo].[RolePermissions]
+           ([RoleName],[PermissionName])
+             VALUES
+            ('Admin', 'AddUser'),
+            ('Admin', 'DeleteUser'),
+            ('Admin', 'EditUserRole'),
+            ('Admin', 'ViewAlbums'),
+            ('Admin', 'EditAlbums'),
+            ('UserController', 'AddUser'),
+            ('UserController', 'DeleteUser'),
+            ('UserController', 'EditUserRole'),
+            ('AlbumViewer', 'ViewAlbums'),
+            ('AlbumEditer', 'EditAlbums'),
+            ('AlbumEditer', 'ViewAlbums')");
 
         }
 

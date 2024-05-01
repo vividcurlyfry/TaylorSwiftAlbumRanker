@@ -51,10 +51,12 @@ else
         if(Id == null)
         {
             await UserService.AddUser(user);
+            NavigationManager.NavigateTo("/users/");
         }
         else
         {
             await UserService.UpdateUser(user);
+            NavigationManager.NavigateTo("/users/");
         }
     }
 
