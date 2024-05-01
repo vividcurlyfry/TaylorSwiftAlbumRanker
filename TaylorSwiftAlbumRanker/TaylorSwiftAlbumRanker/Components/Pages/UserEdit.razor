@@ -1,6 +1,10 @@
 ﻿@page "/edit-user"
 @page "/edit-user/{id:int}"
 @inject IUsersService UserService
+@inject IPermissionsService PermissionsService
+@inject IRolePermissionsService RolePermissionService
+@inject IRolesService RoleService
+@inject IUserRolesService UserRolesService
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
@@ -8,26 +12,31 @@
 {
     <h3>Add User</h3>
 }
-else @if (@user != null)
+else
 {
     <h3>Edit @user.Username</h3>
 }
 
 
-<EditForm Model="user" OnSubmit="HandleSubmit" FormName="editUser">
-    <label>Username</label>
-    <InputText @bind-Value="user!.Username"/>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    @if(Id != null){
+<EditForm Model="@user" OnSubmit="HandleSubmit" FormName="editUser">
+    <InputText @bind-Value="@user!.Username"/>
+    <div></div>
+    @if (Id != null)
+    {
+        <button Id="user.Id" @onclick="EditRoles" type="button" class="btn btn-primary">Edit Roles</button>
+    }
+    @if(Id != null)
+    {
         <DeleteUserButton Id="user.Id" />
     }
+    <button type="submit" class="btn btn-primary">Done</button>
 </EditForm>
 
 @code {
     [Parameter]
     public int? Id { get; set; }
     [SupplyParameterFromForm]
-    User user { get; set; } = new User { Username = string.Empty, RolePermission = 0 };
+    User user { get; set; } = new User { Username = string.Empty};
 
     protected override async Task OnParametersSetAsync()
     {
@@ -42,10 +51,17 @@ else @if (@user != null)
         if(Id == null)
         {
             await UserService.AddUser(user);
+            NavigationManager.NavigateTo("/users/");
         }
         else
         {
             await UserService.UpdateUser(user);
+            NavigationManager.NavigateTo("/users/");
         }
+    }
+
+    void EditRoles()
+    {
+        NavigationManager.NavigateTo($"/edit-roles/{user.Id}");
     }
 }

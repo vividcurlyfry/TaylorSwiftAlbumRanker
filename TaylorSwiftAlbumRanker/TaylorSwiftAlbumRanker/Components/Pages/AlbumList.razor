@@ -1,4 +1,5 @@
-﻿@page "/albums"
+﻿@page "/"
+@page "/albums"
 @inject IAlbumsService AlbumsService
 @inject NavigationManager NavigationManager
 @attribute [StreamRendering(true)]
@@ -19,18 +20,24 @@ else
 {
         @foreach(var album in albums)
         {
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="@album.PictureHyperlink"alt="@album.AlbumName">
-                <div class="card-body">
-                    <h5 class="card-title">@album.AlbumName</h5>
-                    <p class="card-text">OVERALL RANKING DISPLAYED HERE</p>
-
+            <div style="padding-bottom: 2rem;">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="@album.PictureHyperlink"alt="@album.AlbumName">
+                    <div class="card-body">
+                        <h5 class="card-title">@album.AlbumName</h5>
+                    <p class="card-text">Ranking: @GetAlbumRank(album)</p>
+                    </div>
                 </div>
             </div>
+        <div style="padding-bottom: 2rem;">
+            @if (!album.AlbumName.Contains("Version"))
+            {
+                <button Id="album.Id" @onclick="() => EditAlbum(album.Id)" class="btn btn-primary">Update to Taylor's Version</button>
+            }
+            <button Id="album.Id" @onclick="() => RankAlbum(album.Id)" class="btn btn-primary">Rank Album</button>
+        </div>
         }       
 }
-
-<button @onclick="AddNewAlbum" class="btn btn-primary">Add New Album</button>
 
 @code {
     List<Album>? albums = new List<Album>();
@@ -40,8 +47,24 @@ else
         albums = await  AlbumsService.GetAllAlbums();
     }
 
-    void AddNewAlbum()
+    void EditAlbum(int id)
     {
-        NavigationManager.NavigateTo("/edit-album");
+        NavigationManager.NavigateTo($"/edit-album/{id}");
+    }
+
+    void RankAlbum(int id)
+    {
+        NavigationManager.NavigateTo($"/rank-album/{id}");
+    }
+
+    float GetAlbumRank(Album album)
+    {   try
+        {
+            return album.Ranking / album.NumRanking;
+        }
+        catch
+        {
+            return 0;
+        }
     }
 }
