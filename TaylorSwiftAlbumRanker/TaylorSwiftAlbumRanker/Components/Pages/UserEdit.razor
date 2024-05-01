@@ -62,6 +62,6 @@ else
 
     void EditRoles()
     {
-        NavigationManager.NavigateTo("/edit-roles/"+(user.Id.ToString()));
+        NavigationManager.NavigateTo($"/edit-roles/{user.Id}");
     }
 }

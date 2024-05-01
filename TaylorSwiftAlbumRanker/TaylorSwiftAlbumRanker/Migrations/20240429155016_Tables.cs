@@ -21,7 +21,8 @@ namespace TaylorSwiftAlbumRanker.Migrations
                        .Annotation("SqlServer:Identity", "1, 1"),
                    AlbumName = table.Column<string>(type: "nvarchar(450)", nullable: false),
                    PictureHyperlink = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                   Ranking = table.Column<int>(type: "int", nullable: false)
+                   Ranking = table.Column<int>(type: "int", nullable: false),
+                   NumRanking = table.Column<int> (type: "int", nullable: false)
                },
                constraints: table =>
                {
@@ -64,7 +65,7 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RolePermissions", x => x.Id);
-                    table.ForeignKey("PK_RP_RoleName", x => x.RoleName, "Roles","RoleName");
+                    table.ForeignKey("PK_RP_RoleName", x => x.RoleName, "Roles", "RoleName");
                     table.ForeignKey("PK_RP_PermissionName", x => x.PermissionName, "Permissions", "PermissionName");
                 });
 
@@ -119,6 +120,21 @@ namespace TaylorSwiftAlbumRanker.Migrations
                 { "AlbumViewer", "Permission to view and rank albums."},
                 { "AlbumEditer", "Permission to edit albums."}
             });
+
+            migrationBuilder.Sql(@"INSERT INTO[dbo].[Albums]
+           ([AlbumName], [PictureHyperlink], [Ranking], [NumRanking])
+                VALUES
+           ('Taylor Swift', 'images/debut.png', 0,0),
+           ('Fearless', 'images/fearless.png', 0,0),
+           ('Speak Now (Taylor's Version)', 'images/speaknow.png',0,0),
+           ('Red', 'images/red.png', 0,0),
+           ('1989', 'images/1989.png', 0,0),
+           ('Reputation', 'images/reputation.png', 0,0),
+           ('Lover', 'images/lover.png', 0,0),
+           ('Folklore', 'images/folklore.png', 0,0),
+           ('Evermore', 'images/evermore.png', 0,0),
+           ('Midnights', 'images/midnights.png', 0,0),
+           ('The Tortured Poets Department', 'images/ttpd.png', 0,0)");
 
             migrationBuilder.Sql(@"INSERT INTO[dbo].[RolePermissions]
            ([RoleName],[PermissionName])

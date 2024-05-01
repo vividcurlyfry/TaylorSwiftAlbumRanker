@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TaylorSwiftAlbumRanker.Client.Pages;
 using TaylorSwiftAlbumRanker.Components;
 using TaylorSwiftAlbumRanker.Data;
+using TaylorSwiftAlbumRanker.Entities;
 using TaylorSwiftAlbumRanker.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +21,6 @@ builder.Services.AddScoped<IPermissionsService, PermissionsService>();
 builder.Services.AddScoped<IRolePermissionsService, RolePermissionsService>();
 builder.Services.AddScoped<IRolesService, RolesService>();
 builder.Services.AddScoped<IUserRolesService, UserRolesService>();
-//builder.Services.AddScoped<IRankingService, PermissionsService>();
 
 var app = builder.Build();
 

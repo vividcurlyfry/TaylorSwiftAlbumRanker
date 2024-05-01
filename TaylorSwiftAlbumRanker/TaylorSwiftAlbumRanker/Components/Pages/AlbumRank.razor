@@ -1,32 +1,39 @@
-﻿@page "/edit-album/{id:int}"
+﻿@page "/rank-album/{id:int}"
 @inject IAlbumsService AlbumService
 @rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
-<h3>Update to Taylor's Version: @album.AlbumName</h3>
+<h3>Rank Album @album.AlbumName</h3>
 
 <EditForm Model="album" OnSubmit="HandleSubmit" FormName="editAlbum">
-    <label>Album</label>
-    <InputText @bind-Value="imageName">Submit</InputText>
-    <div>Upload your image to wwwroot/images and enter the file name!</div>
+    <label>Ranking (integers only)</label>
+    <InputText @bind-Value="ranking_string">Submit</InputText>
     <button type="submit" class="btn btn-primary">Submit</button>
 </EditForm>
 @code {
     [Parameter]
     public int? Id { get; set; }
-
     [SupplyParameterFromForm]
     Album album { get; set; } = new Album { AlbumName = string.Empty, PictureHyperlink = string.Empty, Ranking = 0, NumRanking = 0};
-
-    string imageName = "";
+    int ranking = 0;
+    string ranking_string = "";
+    int previous_ranking = 0;
 
     async Task HandleSubmit()
     {
         album = await AlbumService.GetAlbum((int)Id);
-        album.AlbumName += "(Taylor's Version)";
+        try
+        {
+            ranking = Int32.Parse(ranking_string);
+        }
+        catch (FormatException e)
+        {
+            Console.WriteLine(e.Message);
+        };
 
-        imageName = "images/" + imageName;
-        album.PictureHyperlink = imageName;
+        previous_ranking = album.Ranking + ranking;
+        album.NumRanking++;
+        album.Ranking = previous_ranking;
         await AlbumService.EditAlbum(album);
         NavigationManager.NavigateTo("/albums");
     }

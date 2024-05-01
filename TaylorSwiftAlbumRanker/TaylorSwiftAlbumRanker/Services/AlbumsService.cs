@@ -13,12 +13,22 @@ namespace TaylorSwiftAlbumRanker.Services
             _context = context;
         }
 
-        public async Task<Album> AddAlbum(Album album)
+        public async Task<Album> EditAlbum(Album album)
         {
-            _context.Albums.Add(album);
-            await _context.SaveChangesAsync();
+            var dbAlbum = await _context.Albums.FindAsync(album.Id);
+            if (dbAlbum != null)
+            {
+                dbAlbum.PictureHyperlink = album.PictureHyperlink;
+                dbAlbum.NumRanking = album.NumRanking;
+                await _context.SaveChangesAsync();
+                return dbAlbum;
+            }
+            throw new Exception("Album not found.");
+        }
 
-            return album;
+        public async Task<Album> GetAlbum(int id)
+        {
+            return await _context.Albums.FindAsync(id);
         }
 
         public async Task<List<Album>> GetAllAlbums()
